@@ -30,4 +30,3 @@ Find out all vehicles which max_atmosphering_speed over 1000
     ${all_vehicles}=    Get All Vehicles From Page
     ${result}=    Find Max Atmosphering Speed Over    1000    ${all_vehicles}  # 排除 unknown
     Log To Console    ${result}
-
