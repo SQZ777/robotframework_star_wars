@@ -10,6 +10,7 @@ Get All Vehicles From Page
     ${vehicle_list_from_page}=    Create List
     :FOR    ${page_number}    IN RANGE    1    100
     \    ${resp}=    Get Request    swapi    /vehicles/?page=${page_number}
+    \    Should Be Equal As Strings    ${resp.status_code}    200
     \    ${vehicle_list_from_page}=    Combine Lists    ${vehicle_list_from_page}    ${resp.json()["results"]}
     \    Exit For Loop If    '${resp.json().get("next")}' == '${None}'
     [Return]    ${vehicle_list_from_page}
@@ -23,10 +24,11 @@ Count Species Of Films Six
 
 List all the film names and sort the name by episode_id
     ${resp}=    Get Request    swapi    /films/
+    Should Be Equal As Strings    ${resp.status_code}    200
     ${sort_result}=    Sort List By Epsode Id    ${resp.json()["results"]}
     Log    ${sort_result}
 
 Find out all vehicles which max_atmosphering_speed over 1000
     ${all_vehicles}=    Get All Vehicles From Page
-    ${result}=    Find Max Atmosphering Speed Over    1000    ${all_vehicles}  # 排除 unknown
+    ${result}=    Find Max Atmosphering Speed Over    1000    ${all_vehicles}  # 此 Keyword 將會排除 速度為 unknown 的機器
     Log    ${result}
