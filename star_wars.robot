@@ -19,14 +19,14 @@ Count Species Of Films Six
     ${resp}=    Get Request    swapi    /films/6
     Should Be Equal As Strings    ${resp.status_code}    200
     ${species_len}=    Get Length    ${resp.json()["species"]}
-    Log To Console    ${species_len}
+    Log    ${species_len}
 
 List all the film names and sort the name by episode_id
     ${resp}=    Get Request    swapi    /films/
     ${sort_result}=    Sort List By Epsode Id    ${resp.json()["results"]}
-    Log To Console    ${sort_result}
+    Log    ${sort_result}
 
 Find out all vehicles which max_atmosphering_speed over 1000
     ${all_vehicles}=    Get All Vehicles From Page
     ${result}=    Find Max Atmosphering Speed Over    1000    ${all_vehicles}  # 排除 unknown
-    Log To Console    ${result}
+    Log    ${result}
