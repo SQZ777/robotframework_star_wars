@@ -37,46 +37,52 @@ class TestCustomLibrary(unittest.TestCase):
     def test_find_max_atmosphering_speed_over_speed1000_10_car_Should_Return_empty_array(self):
         test_data = [
             {"max_atmosphering_speed": "10",
-            "name": "Car"}
+             "name": "Car"}
         ]
-        actual = custom_library.find_max_atmosphering_speed_over(1000, test_data)
+        actual = custom_library.find_max_atmosphering_speed_over(
+            1000, test_data)
         self.assertEqual([], actual)
 
     def test_find_max_atmosphering_speed_over_speed1000_unknown_car_Should_Return_empty_array(self):
         test_data = [
             {"max_atmosphering_speed": "unknown",
-            "name": "Car"}
+             "name": "Car"}
         ]
-        actual = custom_library.find_max_atmosphering_speed_over(1000, test_data)
+        actual = custom_library.find_max_atmosphering_speed_over(
+            1000, test_data)
         self.assertEqual([], actual)
-        
+
     def test_find_max_atmosphering_speed_over_speed1000_1001_car_Should_Return_Car(self):
         test_data = [
             {"max_atmosphering_speed": "1001",
-            "name": "Car"}
+             "name": "Car"}
         ]
-        actual = custom_library.find_max_atmosphering_speed_over(1000, test_data)
+        actual = custom_library.find_max_atmosphering_speed_over(
+            1000, test_data)
         self.assertEqual(["Car"], actual)
-        
+
     def test_find_max_atmosphering_speed_over_speed1000_1000_car_1001_HaHaCar_Should_Return_HaHaCar(self):
         test_data = [
             {"max_atmosphering_speed": "1000",
-            "name": "Car"},
+             "name": "Car"},
             {"max_atmosphering_speed": "1001",
-            "name": "HaHaCar"}
+             "name": "HaHaCar"}
         ]
-        actual = custom_library.find_max_atmosphering_speed_over(1000, test_data)
+        actual = custom_library.find_max_atmosphering_speed_over(
+            1000, test_data)
         self.assertEqual(["HaHaCar"], actual)
 
     def test_find_max_atmosphering_speed_over_speed1000_1990_car_1001_HaHaCar_Should_Return_Car_HaHaCar(self):
         test_data = [
             {"max_atmosphering_speed": "1990",
-            "name": "Car"},
+             "name": "Car"},
             {"max_atmosphering_speed": "1001",
-            "name": "HaHaCar"}
+             "name": "HaHaCar"}
         ]
-        actual = custom_library.find_max_atmosphering_speed_over(1000, test_data)
+        actual = custom_library.find_max_atmosphering_speed_over(
+            1000, test_data)
         self.assertEqual(["Car", "HaHaCar"], actual)
+
 
 if __name__ == '__main__':
     unittest.main()
