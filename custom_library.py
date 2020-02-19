@@ -2,6 +2,7 @@ from robot.api import logger
 import urllib3
 urllib3.disable_warnings()
 
+
 def sort_list_by_epsode_id(target_list):
     result = [None] * len(target_list)
     episode_ids = [None] * len(target_list)
