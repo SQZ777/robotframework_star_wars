@@ -35,5 +35,5 @@ robot star_wars.robot
 ## How To Execute Unit Test for custom library
 
 ```shell script
-python3 test_custom_library.py
+python test_custom_library.py
 ```
